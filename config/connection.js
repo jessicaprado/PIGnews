@@ -1,9 +1,14 @@
 var mongoose = require('mongoose');
-var connection;
 
-mongoose.createConnection('your connection string'),
-    MyModel = conn.model('ModelName', schema),
-    m = new MyModel;
-m.save(); // works 
+mongoose.connect('mongodb://localhost/PIGnews');
+var db = mongoose.connection;
 
-module.exports = connection;
+db.on('error', function(error){
+	console.log(error)
+});
+
+db.once('open', function(){
+	console.log("DB connected")
+});
+
+module.exports = db;

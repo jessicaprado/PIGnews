@@ -1,0 +1,22 @@
+<div class = "container">
+	
+
+	<div class='images col-md-1'>
+
+	</div>
+
+	<div class="news col-md-8">
+		<ul>
+		  {{#each Articles}}
+		    <li>
+		    <h5>{{title}}</h5>
+		    <a class="link">{{link}}</a>
+		    </li> 
+		  {{/each}}
+		</ul>
+	</div>
+
+	<div class='moreNews col-md-12'>
+		<button class='pigButton'>More PIG News!</button>
+	</div>
+</div>

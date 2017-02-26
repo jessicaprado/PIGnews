@@ -44,6 +44,7 @@ app.get('/scrape', function(req, res) {
 			 })
  		})
  	})
+ 	res.redirect('/');
  })
 
 module.exports = app;

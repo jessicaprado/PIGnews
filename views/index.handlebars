@@ -1,19 +1,23 @@
 <div class = "container">
-	
 
-	<div class='images col-md-1'>
-
-	</div>
-
-	<div class="news col-md-8">
+	<div >
 		<ul>
-		  {{#each Articles}}
-		    <li>
-		    <h5>{{title}}</h5>
-		    <a class="link">{{link}}</a>
-		    </li> 
-		  {{/each}}
+		 	<div class="news col-md-10">
+		  		{{#each Articles}}
+		    		<li class="list">
+		    			<div class="image_div">
+		    				<img src="{{image}}">
+		    			</div>
+
+		    			<div class="titleLinkDiv">
+		    				<h5>{{title}}</h5>
+		    				<a class="link">{{link}}</a>
+		    			</div>
+		    		</li> 
+		  		{{/each}}
+		 	</div> 
 		</ul>
+		
 	</div>
 
 	<div class='moreNews col-md-12'>

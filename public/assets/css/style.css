@@ -41,3 +41,20 @@ ul {
 	padding: 5px 10px;
 	font-family: 'Dosis', sans-serif;
 }
+
+.list {
+	display: inline-block;
+	margin: 10px 0 10px;
+}
+
+.image_div {
+	float: left;
+	width: 15%;
+	position: relative;
+}
+
+.titleLinkDiv {
+	float: right;
+	position: relative;
+	width: 80%;
+}

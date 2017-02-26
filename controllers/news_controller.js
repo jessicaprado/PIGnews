@@ -23,14 +23,16 @@ app.get('/scrape', function(req, res) {
 
  		var $ = cheerio.load(body);
 		
- 		$('p.title').each(function(i, element){
+ 		$('.thing').each(function(i, element){
  			
  		 	var result = {};
 
- 		 	result.title = $(this).children("a").text();
+ 		 	result.title = $(this).children(".entry").children("p.title").children("a.title").text();
 
- 		 	result.link = $(this).children().attr('href');
+ 		 	result.link = $(this).children(".entry").children("p.title").children("a.title").attr('href');
 			
+			result.image = $(this).children().children('img').attr('src');
+ 		 	
  		 	var entry = new Articles(result);
 			
  		 	entry.save(function(err, doc){

@@ -26,7 +26,10 @@
 						</form>	
 	    			</div>
 
-	    			<div class="viewComments">{{this.comment.text}}</div>	
+	    			<div class="viewComments">{{#each comment}}
+	    				{{this.text}}
+						{{/each}}
+	    				</div>	
     			</div>
 
     		</li> 

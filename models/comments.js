@@ -4,13 +4,9 @@ mongoose.Promise = Promise;
 var Schema = mongoose.Schema;
 
 var UserComments = new Schema ({
-	title: {
-		type: String
-	},
-	body: {
+	text: {
 		type: String
 	}
-
 })
 
 var Comments = mongoose.model('Comment', UserComments);

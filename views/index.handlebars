@@ -8,16 +8,25 @@
     			</div>
 
     			<div class="titleLinkDiv">
-    				<h5>{{title}}</h5>
-    				<a class="link">{{link}}</a>
+    				<h5>{{this.title}}</h5>
+    				<a class="link">{{this.link}}</a>
     				<br>
 	    			
 
 	    			<div class='add_comments_div'>
-						<form action='/addComments' method='POST'>
-    						<textarea type="text" name='newComment'></textarea>
+						<form action='/articles/{{this.id}}' method='POST'>
+    						<textarea type="text" name='text'></textarea>
     						<button class='submit' type="submit">Post</button>
 						</form>		
+	    			</div>
+	    			<div>
+	    				<ul>
+			    			{{#each Comments}}
+			    				<li>
+				    				{{text}}
+			    				</li>
+			    			{{/each}}
+	  					</ul>
 	    			</div>	
     			</div>
 

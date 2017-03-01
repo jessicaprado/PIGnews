@@ -1,14 +1,17 @@
 //required modules
 var express = require('express');
-var app = express();
 var request = require('request');
 var cheerio = require('cheerio');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser')
+
 //required js files
 var db = require('./../config/connection.js');
 var Articles = require('./../models/news.js');
 var Comments = require('./../models/comments.js');
+var app = express();
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.json());
 
 //ROUTES
 
@@ -61,30 +64,26 @@ app.get('/article/:id', function(req, res){
 
 	Article.find({"id": req.params.id})
 
-	.populate('Comment')
+	.populate('comment')
 
 	.exec(function(err, doc) {
 		res.json(doc);
 	})
 })
 
-app.post('/addComments', function(req, res){
+app.post('/articles/:id', function(req, res){
 
-	//var newComment = new Comments(req.body);
-	console.log(req);
-	//newComment.save(function(error, doc) {
+	var text = new Comments(req.body);
 
-		//console.log(doc);
-		// if(error) {
-		// 	console.log(error)
-		// } else {
-		// 	Comments.find({"id": "req.params.id"}, {'body'})
+	text.save(function(error, doc) {
+		
+		Articles.findOneAndUpdate({"_id" : req.params.id}, {"comment" : doc.id}) 
 
-		// 	.exec(function(err, doc){
-		// 		res.redirect('/')
-		// 	})
-		//}
-	//})
+		.exec(function(err, doc) {
+			
+		res.send(doc);	
+		})		 			
+	})
 });
 
 module.exports = app;

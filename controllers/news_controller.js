@@ -32,35 +32,35 @@ app.get('/', function(req, res) {
 // scrapes data from website when "MORE PIG NEWS" button is selected
 app.get('/scrape', function(req, res) {
 	//Start of cheerio
- 	var url = 'http://www.goodnewsnetwork.org/uplift/inspiring/';
+ 	var url = 'http://www.sunnyskyz.com/good-news';
 
  	request(url, function(err, res, body) {
 
  		var $ = cheerio.load(body);
 		
- 		$('.td_mod2').each(function(i, element){
+ 		$('.newslist').each(function(i, element){
  			
  		 	var result = {};
 
- 		 	result.title = $(this).children("h3.entry-title").children("a").text();
+ 		 	result.title = $(this).children("p.titlenews").text();
 
- 		 	result.link = $(this).children("h3.entry-title").children("a").attr('href');
+ 		 	result.link = $(this).attr('href');
 			
-			result.image = $(this).children(".thumb-wrap").children('a').children("img").attr('src');
+			result.image = $(this).children().attr('src');
  		 	
- 		 	console.log("Title: " + result.image);
+ 		 	console.log("Title: " + result.link);
 
  		 	var entry = new Articles(result);
 			
  		 	entry.save(function(err, doc){
  		 		if (err) {
  		 			console.log(err)
- 				} else {
- 		 			console.log(doc)
- 		 		}
-			 })
+ 				} 
+			})
  		})
+ 		
  	})
+ 	
  	res.redirect('/');
  })
 
@@ -106,7 +106,7 @@ app.post('/submit', function(req, res){
 app.get('/delete/:id', function(req, res){
 
 	Comments.findByIdAndRemove(req.params.id, function(err, doc){
-		
+
 		res.redirect('/');
 	})
 })

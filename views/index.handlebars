@@ -2,44 +2,48 @@
 	
 	<ul>
   		{{#each Articles}}
-    		<li class="col-md-12 list">
-    			<div class="image_div" height="100">
-    				<img src="{{image}}">
-    			</div>
-
-    			<div class="titleLinkDiv">
-    				<h5>{{this.title}}</h5>
-    				<a class="link">{{this.link}}</a>
-    				<br>
-	    			
-
-	    			<div class='add_comments_div'>
-						<form action='/submit' method='POST'>
-    						<textarea type="text" name='text'></textarea>
-    						<button class='submit' type="submit">Post</button>
-						</form>		
+    		<li class=" list">
+	    		<div class="row">
+	    			<div class="image_div" height="100">
+	    				<img src="{{image}}">
 	    			</div>
 
-	    			<div>
-		    			<form action='/articles/{{this.id}}' method='GET'>
+	    			<div class="titleLinkDiv">
+	    				<h5>{{this.title}}</h5>
+	    				<a class="link" href="{{this.link}}">Read the story here</a>
+	    				<br>
+		    		</div>	
+				
+	    		<!--<div class="commentsButton">
+		    			 <form action='/articles/{{this.id}}' method='GET'>
 							<button class='comments'>Comments!</button>
 						</form>	
-	    			</div>
+	    			</div>-->
+				</div>
 
-	    			<div class="viewComments">
-						<ul>
-							{{#each comment}}
-								<li>
-									{{this.text}}
-										<form action='/delete/{{this.id}}' method='GET'>
-											<button class='comments'>X</button>
+					<div class="expandedCommentsDiv">
+		    			<div class='add_comments_div'>
+		    				<p class="addCommentsText"> add comments!</p>
+							<form action='/submit' method='POST'>
+	    						<textarea type="text" name='text'></textarea>
+	    						<button class='submit' type="submit">Post</button>
+							</form>		
+		    			</div>
+
+		    			<div class="viewComments">
+							<ul>
+								{{#each comment}}
+									<li class="listComments">
+										<form action='/delete/{{this.id}}' method='GET'>{{this.text}}
+											<button class='deleteComments'>X</button>
 										</form>	
-								</li>
-							{{/each}}
-						</ul>
-	    			</div>	
-    			</div>
+									</li>
+								{{/each}}
+							</ul>
+		    			</div>	
+					</div>
 
+    			
     		</li> 
   		{{/each}}
 	</ul>

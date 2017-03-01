@@ -13,14 +13,27 @@ h4 {
 }
 
 h5 {
-	text-align: center;
+	display: inline-block;
 	font-family: 'Dosis', sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+	margin-left: -30px;
 }
 
-.link {
+a {
+	position: relative;
 	text-align: center;
 	font-family: 'Dosis', sans-serif;
+	margin-left: -30px;
 }
+
+.addCommentsText {
+	text-align: center;
+	font-family: 'Dosis', sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+}
+
 
 .header {
 	background-color: #ccffff;
@@ -29,8 +42,10 @@ h5 {
 }
 
 .image_div img {
-	margin: 5px auto;
-	display: block;
+	margin: 5px 0 0 20px;
+	position: relative;
+	float: left;
+	width: 30%;
 }
 
 body {
@@ -44,8 +59,8 @@ ul {
 }
 
 li {
-	margin: 10px auto;
-	border: 1px solid black;
+	margin: 15px auto;
+	background-color: #fff1f0;
 }
 
 .moreNews {
@@ -64,7 +79,7 @@ li {
 	font-family: 'Dosis', sans-serif;
 }
 
-.titleLinkDiv button {
+button {
 	background-color: #ccffff;
 	border: none;
 	color: #333333;
@@ -72,15 +87,64 @@ li {
 	font-size: 16px;
 	padding: 5px 10px;
 	font-family: 'Dosis', sans-serif;
+
+}
+
+.link {
+	font-size: 24px;
 }
 
 .favorites {
 	float: right;
 }
 
-.add_comments_div,
-.comments_div {
+.add_comments_div {
 	margin: 5px auto;
+	width: 100%;
 	display: inline-block;
 }
 
+.expandedCommentsDiv {
+	width: 100%;
+	display: block;
+	background-color: #fff1f0;
+	margin-top: 10px;
+}
+
+.titleLinkDiv {
+	position: relative;
+	width: 60%;
+	float: right;
+}
+
+.viewComments button{
+	position: relative;
+	display: inline-block;
+	float: right;
+	height: 20px;
+	font-size: 8px;
+}
+
+.listComments {
+	height: 30px;
+	margin-bottom: 10px;
+}
+
+textarea {
+	position: relative;
+	resize: none;
+	display: inline;
+	margin-left: 23%;
+    width: 500px;
+	height: 100px;
+	border: 3px solid #cccccc;
+	padding: 5px;
+}
+
+.submit {
+	
+}
+
+.list {
+	width: 80%;
+}

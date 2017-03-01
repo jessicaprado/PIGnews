@@ -12,10 +12,25 @@ h4 {
 	color: #333333;
 }
 
+h5 {
+	text-align: center;
+	font-family: 'Dosis', sans-serif;
+}
+
+.link {
+	text-align: center;
+	font-family: 'Dosis', sans-serif;
+}
+
 .header {
 	background-color: #ccffff;
 	height: 150px;
 	padding: 3px;
+}
+
+.image_div img {
+	margin: 5px auto;
+	display: block;
 }
 
 body {
@@ -24,6 +39,13 @@ body {
 
 ul {
   list-style-type: none;
+  width: 90%,
+  margin: auto;
+}
+
+li {
+	margin: 10px auto;
+	border: 1px solid black;
 }
 
 .moreNews {
@@ -42,19 +64,22 @@ ul {
 	font-family: 'Dosis', sans-serif;
 }
 
-.list {
-	display: inline-block;
-	margin: 10px 0 10px;
+.titleLinkDiv button {
+	background-color: #ccffff;
+	border: none;
+	color: #333333;
+	text-decoration: none;
+	font-size: 16px;
+	padding: 5px 10px;
+	font-family: 'Dosis', sans-serif;
 }
 
-.image_div {
-	float: left;
-	width: 15%;
-	position: relative;
-}
-
-.titleLinkDiv {
+.favorites {
 	float: right;
-	position: relative;
-	width: 80%;
+}
+
+.add_comments_div,
+.comments_div {
+	margin: 5px auto;
+	display: inline-block;
 }

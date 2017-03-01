@@ -1,24 +1,33 @@
 <div class = "container">
+	
+	<ul>
+  		{{#each Articles}}
+    		<li class="col-md-12 list">
+    			<div class="image_div" height="100">
+    				<img src="{{image}}">
+    			</div>
 
-	<div >
-		<ul>
-		 	<div class="news col-md-10">
-		  		{{#each Articles}}
-		    		<li class="list">
-		    			<div class="image_div">
-		    				<img src="{{image}}">
-		    			</div>
+    			<div class="titleLinkDiv">
+    				<h5>{{title}}</h5>
+    				<a class="link">{{link}}</a>
+    				<br>
+	    			<div class='comments_div'>
+	    				<form action='/comments' method='GET'>
+	    					<button>Comments</button>
+	    				</form>
+	    			</div>
 
-		    			<div class="titleLinkDiv">
-		    				<h5>{{title}}</h5>
-		    				<a class="link">{{link}}</a>
-		    			</div>
-		    		</li> 
-		  		{{/each}}
-		 	</div> 
-		</ul>
+	    			<div class='add_comments_div'>
+	    				<form action='/addComments' method='GET'>
+	    					<button>Add Comments</button>
+	    				</form>
+	    			</div>	
+    			</div>
+
+    		</li> 
+  		{{/each}}
+	</ul>
 		
-	</div>
 
 	<div class='moreNews col-md-12'>
 		<form action='/scrape' method='GET'>

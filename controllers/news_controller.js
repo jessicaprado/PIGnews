@@ -24,7 +24,7 @@ app.get('/', function(req, res) {
 
 	.exec(function(err, articles, doc) {
 
-		console.log(articles);
+		console.log(articles.comment);
 
 		res.render('index', {Articles : articles});
 
@@ -79,19 +79,30 @@ app.get('/articles/:id', function(req, res){
 
 })
 
-app.post('/articles/:id', function(req, res){
+app.post('/submit', function(req, res){
 
 	var text = new Comments(req.body);
 
 	text.save(function(error, doc) {
-		
-		Articles.findOneAndUpdate({"_id" : req.params.id}, {"comment" : doc.id}) 
+		if(error) {
 
-		.exec(function(err, doc) {
+			res.send(error)
+
+		} else {
+		
+			Articles.findOneAndUpdate({}, { $push: { "comment": doc._id} }, { 'new': true}, function(err, doc) {
+
+				if(err) {
+
+					res.send(err)
+
+				} else {
 			
-		res.send(doc);	
-		})		 			
-	})
+					res.redirect('/')
+				}	
+			});		 			
+		}
+	});
 });
 
 module.exports = app;

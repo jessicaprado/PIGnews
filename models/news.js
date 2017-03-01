@@ -16,10 +16,10 @@ var PigNews = new Schema ({
 		type: String,
 		sparse: true,
 	},
-	comment: {
+	comment: [{
 		type: Schema.Types.ObjectId,
 		ref: 'Comment'
-	}
+	}]
 });
 
 var Articles = mongoose.model('PIG Articles', PigNews);

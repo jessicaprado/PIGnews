@@ -71,6 +71,7 @@ app.get('/articles/:id', function(req, res){
 	.populate('comment')
 
 	.exec(function(err, doc) {
+
 		res.redirect('/');
 	})
 
@@ -101,5 +102,13 @@ app.post('/submit', function(req, res){
 		}
 	});
 });
+
+app.get('/delete/:id', function(req, res){
+
+	Comments.findByIdAndRemove(req.params.id, function(err, doc){
+		
+		res.redirect('/');
+	})
+})
 
 module.exports = app;

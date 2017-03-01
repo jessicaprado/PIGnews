@@ -26,10 +26,18 @@
 						</form>	
 	    			</div>
 
-	    			<div class="viewComments">{{#each comment}}
-	    				{{this.text}}
-						{{/each}}
-	    				</div>	
+	    			<div class="viewComments">
+						<ul>
+							{{#each comment}}
+								<li>
+									{{this.text}}
+										<form action='/delete/{{this.id}}' method='GET'>
+											<button class='comments'>X</button>
+										</form>	
+								</li>
+							{{/each}}
+						</ul>
+	    			</div>	
     			</div>
 
     		</li> 

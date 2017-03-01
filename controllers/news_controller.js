@@ -18,11 +18,17 @@ app.use(bodyParser.json());
 //default route. Displays scraped Data
 app.get('/', function(req, res) {
 
-	Articles.find({}, function(err, articles, doc) {
+	Articles.find({})
+
+	.populate('comment')
+
+	.exec(function(err, articles, doc) {
+
+		console.log(articles);
 
 		res.render('index', {Articles : articles});
 
-	}).limit(10); //limits to 10 per page
+	})
 })
 
 // scrapes data from website when "MORE PIG NEWS" button is selected
@@ -60,15 +66,17 @@ app.get('/scrape', function(req, res) {
  	res.redirect('/');
  })
 
-app.get('/article/:id', function(req, res){
+app.get('/articles/:id', function(req, res){
 
-	Article.find({"id": req.params.id})
+	Articles.findOne({"_id": req.params.id})
 
 	.populate('comment')
 
 	.exec(function(err, doc) {
-		res.json(doc);
+		
+		res.redirect('/');
 	})
+
 })
 
 app.post('/articles/:id', function(req, res){

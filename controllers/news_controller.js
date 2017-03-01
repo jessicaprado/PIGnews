@@ -24,7 +24,7 @@ app.get('/', function(req, res) {
 
 	.exec(function(err, articles, doc) {
 
-		console.log(articles.comment);
+		console.log(articles);
 
 		res.render('index', {Articles : articles});
 
@@ -68,12 +68,12 @@ app.get('/scrape', function(req, res) {
 
 app.get('/articles/:id', function(req, res){
 
-	Articles.findOne({"_id": req.params.id})
+	Articles.find({})
 
 	.populate('comment')
 
 	.exec(function(err, doc) {
-		
+		console.log(doc);
 		res.redirect('/');
 	})
 
@@ -98,7 +98,7 @@ app.post('/submit', function(req, res){
 
 				} else {
 			
-					res.redirect('/')
+					res.redirect('/');
 				}	
 			});		 			
 		}

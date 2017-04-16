@@ -23,6 +23,6 @@ app.use(bodyParser.raw({ type: 'application/vnd.custom-type' }));
 app.use(bodyParser.text({ type: 'text/html' }));
 
 app.listen(PORT, function(){
-	console.log('I am listening on PORT ' + PORT)
+	console.log('I am always listening on PORT ' + PORT)
 });
 
